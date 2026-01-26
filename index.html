@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Kyle Neubarth </title>
+	<link href="cyanobacteria.css" rel="stylesheet" type="text/css" media="all">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<style>
+	:root { --profile-img-size: 240px; }
+	#profile-rotator { text-align: center; width: var(--profile-img-size); height: var(--profile-img-size); margin: 0 auto; overflow: hidden; border-radius: 8px; }
+	#profile-rotator img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .45s ease; opacity: 1; }
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<header>
+			<span>Kyle Neubarth</span>
+			<h4  style="position: absolute; bottom: 5px; left: 5px;">Systems Designer, Tools Programmer</h4>
+		</header>
+
+		<section class="small">
+			<h2>About</h2>
+			<p>Boulder based programmer with 5+ years of experience in Unreal and Unity with a focus on internal Tools and UI/UX programming. When I'm not being a computer gremlin I'm usually biking, board gaming, or running some sort of homebrew tabletop.</p>
+		</section>
+
+		
+		
+		<section class="half">
+			<div id="profile-rotator" data-images="kyle1.png;kyle2.png;kyle3.png">
+				<img id="rot-img" src="kyle1.png">
+			</div>
+			<p>I'm a Game Programmer with 4+ years of experience in Unity and Unreal with a recently shipped game under my belt. <br><br>My work has been eclectic, from public safety tools to animation systems, but what I'm really here for the games. I pride myself at building internal tools to help your developers develop and gameplay systems to give you players unforgettable experiences. <br><br> Other hats I've worn include UI/UX, Level Design, Sysadmin, and QA Management. But really what I see as most important is bridging whatever gap is present on my team and pushing things over the finish line. I'm looking forward to bringing my technical skill and collaborative ability to my future projects and teams.</p>
+			
+		</section>
+				
+		<div class="small">
+			<nav>
+				<div>Links</div>
+				<a href="https://www.linkedin.com/in/kyle-neubarth-129509163/">LinkedIn</a>
+				<a href="https://github.com/KyleNeubarth">GitHub</a>
+				<a href="files/kyleneubarth_resume.pdf" download="Kyle_Neubarth_Resume.pdf">Resume</a>
+				<a href="mailto:kylemakegames@gmail.com">Contact</a>
+				<a href="https://store.steampowered.com/app/2343110/Virballs/">Play Virballs!</a>
+				<!-- <a href="https://boardgamearena.com/player?id=94586446">Board Game Arena</a> -->
+				<!-- <a href="">Backloggd</a> -->
+			</nav>
+			<!-- <img src=""> -->
+		</div>
+		
+		<section class="full">
+			<h2><strong>Featured Professional Work</strong></h2>
+		</section>
+
+		<section class="half">
+			<a href="projects/the_operative.html" style="display:block;color:inherit;text-decoration:none;text-align:center;">
+				<h1><strong>The Operative</strong></h1>
+				<img src="pictures/operative_thumbnail.png" height="180">
+				<p>Upcoming interactive story game centered around talking to AI characters through text, voice, and more.</p>
+			</a>
+		</section>
+
+		<section class="half">
+			<a href="projects/virballs.html" style="display:block;color:inherit;text-decoration:none;text-align:center;">
+				<h1><strong>Virballs</strong></h1>
+				<img src="pictures/virballs.png" height="180">
+				<p>Shipped 3rd person action platformer with Kirby-esque combination mechanics.</p>
+			</a>
+		</section>
+
+		<section class="half">
+			<a href="projects/underlord.html" style="display:block;color:inherit;text-decoration:none;text-align:center;">
+				<h1><strong>Underlord</strong></h1>
+				<img src="pictures/underlord_dm.png" height="180px">
+				<p>Asymmetric dungeon crawler prototype where a party of heroes fights through a labyrinth designed during gameplay by a nefarious lord.</p>
+			</a>
+		</section>
+
+		<section class="half">
+			<a href="projects/nexus.html" style="display:block;color:inherit;text-decoration:none;text-align:center;">
+				<h1><strong>Nexus/2AD</strong></h1>
+				<img src="pictures/nexus_thumbnail.png" height="180px">
+				<p style="text-align:center;">Set of animation voice and emotive tools used to make lifelike characters, all wrapped into one plugin.</p>
+			</a>
+		</section>
+
+		<section class="full">
+			<h2><strong>Other Professional Work</strong></h2>
+			<p style="text-align:center;">Please email me (<a href="mailto:kylemakegames@gmail.com">kylemakegames@gmail.com</a>) for more information regarding private projects</p>
+		</section>
+
+		<section class="full" >
+			<h2><strong>Technical Skills</strong></h2>
+			<ul style="column-count: 3; column-gap: 2rem;">
+				<li>C++</li>
+				<li>C#</li>
+				<li>Unreal Blueprints</li>
+				<li>Unity</li>
+				<li>Unreal Engine 4 & 5</li>
+				<li>Figma</li>
+				<li>Git</li>
+				<li>GitLab Administration</li>
+				<li>Perforce</li>
+				<li>Steamworks Administration</li>
+				<li>...and more!</li>
+			</ul>
+		</section>
+		
+	</div>
+
+	<footer>
+		<span>cyanobacteria.css by <a href="https://ribo.zone/free/layouts/">ribo.zone</a></span>
+	</footer>
+
+	<script>
+	// Image rotator: cycles through filenames listed in the container's data-images (semicolon-separated)
+	(function(){
+		var container = document.getElementById('profile-rotator');
+		if(!container) return;
+		var img = document.getElementById('rot-img');
+		var list = (container.getAttribute('data-images') || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean);
+		if(list.length < 2) return; // nothing to rotate
+		var idx = 0;
+		// Preload images
+		var preloaded = list.map(function(src){ var i = new Image(); i.src = src; return i; });
+		function showNext(){
+			var next = (idx + 1) % preloaded.length;
+			// fade out
+			img.style.opacity = 0;
+			var onTrans = function(){
+				img.removeEventListener('transitionend', onTrans);
+				img.src = preloaded[next].src;
+				img.onload = function(){ img.style.opacity = 1; };
+				idx = next;
+			};
+			img.addEventListener('transitionend', onTrans);
+		}
+		// Start rotating every 4 seconds
+		var rotateInterval = 4000;
+		setInterval(showNext, rotateInterval);
+	})();
+	</script>
+
+</body>
+</html>
