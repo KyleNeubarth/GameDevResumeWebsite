@@ -1,35 +1,16 @@
-/* start light mode styling */
-	:root {
-		--text: darkslategrey;
-		--border: lightgrey;
-		--accent: teal;
-		--bg: #dce3e1;
-		--gradientTop: white;
-		--gradientBottom: rgb(240, 248, 255, .8);
-	}
-	header {
-		background: url('***light mode banner image***');
-	}
-/* end light mode styling */
 
-
-/* start dark mode styling */
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--text: white;
-			--border: #5a7678;
-			--accent: #74C365;
-			--bg: rgb(0,60,60,.8);
-			--gradientBottom: rgb(0, 50, 60);
-			--gradientTop: darkslategrey;
-			a:link { color: lightblue; }
-		}
-		header {
-			background: url('***dark mode banner image***');
-		}
-	}
-/* end dark mode styling */
-
+:root {
+	--text: white;
+	--border: #5a7678;
+	--accent: #74C365;
+	--bg: rgb(0,60,60,.8);
+	--gradientBottom: rgb(0, 50, 60);
+	--gradientTop: darkslategrey;
+	a:link { color: lightblue; }
+}
+header {
+	background: url('***dark mode banner image***');
+}
 
 * { 
 	box-sizing: border-box;
