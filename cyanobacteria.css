@@ -6,7 +6,6 @@
 	--bg: rgb(0,60,60,.8);
 	--gradientBottom: rgb(0, 50, 60);
 	--gradientTop: darkslategrey;
-	a:link { color: lightblue; }
 }
 header {
 	background: url('***dark mode banner image***');
@@ -27,6 +26,53 @@ body {
 	background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
 }
 
+ul {
+	list-style: none;
+	padding-left: 1.2em;
+}
+ul li {
+	position: relative;
+}
+ul li::before {
+	content: ">";
+	display: inline-block;
+	margin-left: -0em;
+	margin-right: 0em;
+	color: var(--accent);
+	transform-origin: 25% 50%;
+	transition: transform 0.18s ease;
+}
+
+/* style for collapsible details inside an li */
+ul li .details {
+	display: none;
+	margin-top: 4px;
+	color: #ddd;
+	padding-left: 1.6em;
+	font-size: 0.95rem;
+}
+
+/* when an li is open, rotate the marker and show details */
+ul li.open::before {
+	transform: rotate(90deg);
+}
+ul li.open .details {
+	display: block;
+	font-weight: normal;
+}
+
+/* make elements that toggle details look interactive */
+.has-details {
+    font-weight: 700;
+    cursor: pointer;
+}
+.has-details:hover,
+.has-details:focus {
+    color: var(--accent);
+    outline: none;
+}
+
+
 
 .container {
 	max-width: 55rem;
@@ -45,10 +91,14 @@ body {
 	background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, var(--gradientBottom) 9px ), repeating-linear-gradient( var(--bg), var(--bg));
 }
 /* these control the column widths */
-.small { flex: 1 1 9%; }
+.small { flex: 1 1 9%; display: flex; flex-direction: column; }
 .large { flex: 1 1 82%; }
 .full { flex: 1 1 100%; }
 .half { flex: 1 1 49%; }
+
+/* allow elements inside the small column to size vertically */
+.small > section { flex: 1 1 auto; }
+.small > nav { flex: 0 0 auto; }
 
 
 header {
@@ -98,10 +148,10 @@ nav a:link, nav a:visited {
 	color: var(--text);
 }
 nav a:hover, nav a:focus {
+	color: var(--accent);
 	background: linear-gradient(to right,var(--bg), var(--gradientBottom), var(--gradientTop));
 }
 
-/* optional button styling like in the preview */
 div.small > img {
 	display: block;
 	margin: 5px auto;
@@ -163,5 +213,17 @@ a:hover, a:focus {
 	font-style: italic;
 }
 a:visited {
+	color: var(--accent);
+}
+
+/* Unordered lists: remove default bullets and use ">" as the marker */
+ul {
+	list-style: none;
+	padding-left: 1.2em;
+}
+ul li::before {
+	content: ">";
+	display: inline-block;
+	width: 1.2em;
 	color: var(--accent);
 }

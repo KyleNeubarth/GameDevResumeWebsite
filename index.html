@@ -23,10 +23,16 @@
 			<h4  style="position: absolute; bottom: 5px; left: 5px;">Systems Designer, Tools Programmer</h4>
 		</header>
 
-		<section class="small">
-			<h2>About</h2>
-			<p>Boulder based programmer with 5+ years of experience in Unreal and Unity with a focus on internal Tools and UI/UX programming. When I'm not being a computer gremlin I'm usually biking, board gaming, or running some sort of homebrew tabletop.</p>
-		</section>
+		
+
+		<div class="small">
+			<nav>
+				<div>Navigation</div>
+				<a href="#Technical Skills">Technical Skills</a>
+				<a href="#Professional Work">Professional Work</a>
+				<a href="#Private Work">Private Work</a>
+			</nav>
+		</div>
 
 		
 		
@@ -56,10 +62,33 @@
 				<!-- <a href="">Backloggd</a> -->
 			</nav>
 			<!-- <section>asdf</section> -->
+			<section class="small">
+				<h2>About</h2>
+				<p>Boulder based programmer with 5+ years of experience in Unreal and Unity with a focus on internal Tools and UI/UX programming. When I'm not being a computer gremlin I'm usually biking, board gaming, or running some sort of homebrew tabletop.</p>
+			</section>
 		</div>
+
+		<section class="full" >
+			<h2 id="Technical Skills"><strong>Technical Skills</strong></h2>
+			<ul style="column-count: 3; column-gap: 2rem;">
+				<li>C++</li>
+				<li>C#</li>
+				<li class="has-details">Unreal Blueprints
+					<div class="details">I worked with blueprints a ton.</div>
+				</li>
+				<li>Unity</li>
+				<li>Unreal Engine 4 & 5</li>
+				<li>Figma</li>
+				<li>Git</li>
+				<li>GitLab Administration</li>
+				<li>Perforce</li>
+				<li>Steamworks Administration</li>
+				<li>...and more!</li>
+			</ul>
+		</section>	
 		
 		<section class="full">
-			<h2><strong>Featured Professional Work</strong></h2>
+			<h2 id="Professional Work"><strong>Featured Professional Work</strong></h2>
 		</section>
 
 		<section class="half">
@@ -95,26 +124,9 @@
 		</section>
 
 		<section class="full">
-			<h2><strong>Other Professional Work</strong></h2>
+			<h2 id="Private Work"><strong>Other Professional Work</strong></h2>
 			<p style="text-align:center;">Please email me (<a href="mailto:kylemakegames@gmail.com">kylemakegames@gmail.com</a>) for more information regarding private projects</p>
-		</section>
-
-		<section class="full" >
-			<h2><strong>Technical Skills</strong></h2>
-			<ul style="column-count: 3; column-gap: 2rem;">
-				<li>C++</li>
-				<li>C#</li>
-				<li>Unreal Blueprints</li>
-				<li>Unity</li>
-				<li>Unreal Engine 4 & 5</li>
-				<li>Figma</li>
-				<li>Git</li>
-				<li>GitLab Administration</li>
-				<li>Perforce</li>
-				<li>Steamworks Administration</li>
-				<li>...and more!</li>
-			</ul>
-		</section>		
+		</section>	
 	</div>
 
 	<footer>
@@ -147,6 +159,24 @@
 		// Start rotating every 4 seconds
 		var rotateInterval = 4000;
 		setInterval(showNext, rotateInterval);
+	})();
+	</script>
+
+	<script>
+	// small behavior: toggle list-item details and rotate marker
+	(function(){
+		var lis = document.querySelectorAll('section#Technical\\ Skills ~ ul li, section[id="Technical Skills"] ul li');
+		if(!lis.length) {
+			// fallback: find any li with a .details child
+			lis = document.querySelectorAll('ul li');
+		}
+		lis.forEach(function(li){
+			var details = li.querySelector('.details');
+			if(!details) return;
+			li.setAttribute('tabindex','0');
+			li.addEventListener('click', function(){ li.classList.toggle('open'); });
+			li.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.classList.toggle('open'); } });
+		});
 	})();
 	</script>
 
