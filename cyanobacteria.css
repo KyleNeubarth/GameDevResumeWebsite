@@ -216,6 +216,11 @@ a:visited {
 	color: var(--accent);
 }
 
+/* Make mailto: links use the accent color */
+a[href^="mailto:"] {
+    color: var(--accent);
+}
+
 /* Unordered lists: remove default bullets and use ">" as the marker */
 ul {
 	list-style: none;
@@ -226,4 +231,10 @@ ul li::before {
 	display: inline-block;
 	width: 1.2em;
 	color: var(--accent);
+}
+
+ul .ulcategory {
+	font-weight: bold;
+	font-size: 1.05rem;
+	margin-left: -.5em;
 }
